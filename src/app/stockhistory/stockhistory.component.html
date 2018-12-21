@@ -1,11 +1,9 @@
 <form class="example-container" (ngSubmit)="submitForm()">
-    <!-- <mat-form-field>
-        <input matInput placeholder="Input" [formControl]="symbolValue">
-    </mat-form-field> -->
+
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="symbolValue" [matAutocomplete]="auto">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="symbolValue" [matAutocomplete]="auto" (input)="change()">
         <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let symbol of symbolsArray" [value]="symbol">
+            <mat-option *ngFor="let symbol of filteredOptions" [value]="symbol">
                 {{symbol}}
             </mat-option>
         </mat-autocomplete>
@@ -16,7 +14,8 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <button mat-flat-button>Get Price</button>
-    <div *ngIf='isStockDetailsVisible'>
+
+    <div>
         <ng-template [ngIf]='isRecordFound' [ngIfElse]='recordsSection'>
             <div>
                 <p>No data found for this date</p>

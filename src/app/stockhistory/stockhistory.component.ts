@@ -20,18 +20,20 @@ export class StockhistoryComponent implements OnInit {
   constructor(public serviceService: ServiceService) { }
   ngOnInit() {
     this.isStockDetailsVisible = false;
-    this.filteredOptions = this.symbolValue.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
     this.serviceService.getSymbolsApi('ref-data/symbols').subscribe(data => {
       this.gerSymbolsArray(data);
     }, error => {
       console.log(error);
     });
   }
+  change() {
+    console.log(this.symbolValue.value);
+    this.filteredOptions = this.symbolsArray.filter(option => option.toLowerCase().includes(this.symbolValue.value));
+
+    console.log(this.filteredOptions);
+  }
   private _filter(value: string): string[] {
+    console.log(value);
     const filterValue = value.toLowerCase();
     return this.symbolsArray.filter(option => option.toLowerCase().includes(filterValue));
   }
@@ -50,6 +52,7 @@ export class StockhistoryComponent implements OnInit {
         this.symbolsArray.push(element.symbol);
       }
     });
+    this.filteredOptions = this.symbolsArray;
   }
   public getClosingPriceOfTheDay(closingPrice) {
     if (closingPrice.length) {
