@@ -1,0 +1,35 @@
+<form class="example-container" (ngSubmit)="submitForm()">
+    <!-- <mat-form-field>
+        <input matInput placeholder="Input" [formControl]="symbolValue">
+    </mat-form-field> -->
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="symbolValue" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let symbol of symbolsArray" [value]="symbol">
+                {{symbol}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="dateValue">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-flat-button>Get Price</button>
+    <div *ngIf='isStockDetailsVisible'>
+        <ng-template [ngIf]='isRecordFound' [ngIfElse]='recordsSection'>
+            <div>
+                <p>No data found for this date</p>
+            </div>
+        </ng-template>
+        <ng-template #recordsSection>
+            <mat-list role="list">
+                <mat-list-item role="listitem"><span class="mat-label">Date</span> <span class='mat-label'>{{closingDataObject.date}}</span></mat-list-item>
+                <mat-list-item role="listitem"><span class="mat-label">High</span> <span class='mat-label'>{{closingDataObject.high}}</span></mat-list-item>
+                <mat-list-item role="listitem"><span class="mat-label">Low</span> <span class='mat-label'>{{closingDataObject.low}}</span></mat-list-item>
+                <mat-list-item role="listitem"><span class="mat-label">Average</span> <span class='mat-label'>{{closingDataObject.average}}</span></mat-list-item>
+                <mat-list-item role="listitem"><span class="mat-label">Volume</span> <span class='mat-label'>{{closingDataObject.volume}}</span></mat-list-item>
+            </mat-list>
+        </ng-template>
+    </div>
+</form>

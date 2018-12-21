@@ -1,0 +1,7 @@
+<div class="search-results" infiniteScroll [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()" (scrolledUp)="onUp()">
+    <div *ngIf="dataLoaded">
+        <div *ngFor="let data of array">
+            {{data.symbol}}
+        </div>
+    </div>
+</div>

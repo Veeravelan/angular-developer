@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+@import "../node_modules/@angular/material/prebuilt-themes/purple-green.css";
+.example-container {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.example-container>* {
+    width: 100%;
+}
