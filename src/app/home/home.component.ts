@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   }
   addItems(startIndex, endIndex, _method) {
-    for (let i = 0; i < this.sum; ++i) {
+    for (let i = startIndex; i < endIndex; ++i) {
       this.array[_method](this.getValue[i]);
     }
   }
