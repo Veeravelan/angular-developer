@@ -2,7 +2,38 @@
     height: 100%;
 }
 
-.search-results {
-    width: 200px;
-    height: 50% !important
+// .search-results {
+//     width: 200px;
+//     height: 50% !important
+// }
+table {
+    width: 100%;
+    td,
+    th {
+        min-width: 100px;
+    }
+}
+
+#symbolsUl {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    list-style-type: none;
+    border-collapse: collapse;
+    td {
+        font-size: 14px;
+        height: 56px;
+        padding: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        text-align: left;
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+    tr>td {
+        padding: 22px;
+        min-width: 150px;
+    }
+    tr>td:nth-child(1) {
+        padding-left: 22px;
+    }
 }
